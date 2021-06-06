@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     
     //MARK: - Constants
     fileprivate enum Constants{
+        static let kHomeViewControllerId = "HomeViewController"
         static let kViewStoryboardId = "RegisterViewController"
         static let kButtonOk = "OK"
     }
@@ -35,8 +36,21 @@ class ViewController: UIViewController {
     //MARK:- Login Click Button
     @IBAction func login(_ sender: Any) {
         validateFields()
+        logInFunc()
+        
     }
-    //MARK: -ValidateFields
+    //MARK: - LogInFunc
+    func logInFunc(){
+        guard let email = emailField.text, let password = passwordField.text else { return }
+        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+            if error != nil {
+                self.creatAlert(title: "Login Error", message: "Error when try to login, try later", buttonTitle: Constants.kButtonOk)
+            }else {
+                self.nextScreen(viewId: Constants.kHomeViewControllerId)
+            }
+        }
+    }
+    //MARK: - ValidateFields
     func validateFields() -> Bool{
         
         if (emailField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""){
