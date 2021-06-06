@@ -8,4 +8,7 @@ target 'Movie-Challenge' do
   # Pods for Movie-Challenge
     pod 'Firebase/Analytics'
     pod 'Firebase/Auth'
+    pod 'Firebase/Core'
+    pod 'Firebase/Firestore'
+
 end
