@@ -10,5 +10,5 @@ target 'Movie-Challenge' do
     pod 'Firebase/Auth'
     pod 'Firebase/Core'
     pod 'Firebase/Firestore'
-
+    pod 'FBSDKLoginKit'
 end

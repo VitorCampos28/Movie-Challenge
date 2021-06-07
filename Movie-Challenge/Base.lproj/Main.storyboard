@@ -38,12 +38,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R98-fa-eOv">
+                                <rect key="frame" x="41.5" y="625" width="331" height="46"/>
+                                <state key="normal" image="Facebook"/>
+                                <connections>
+                                    <action selector="loginFacebookButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e19-Sf-V8x"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="R98-fa-eOv" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.06" id="1A7-47-kI5"/>
                             <constraint firstItem="33Z-tz-YKA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2re-y5-VnM"/>
                             <constraint firstItem="E66-mK-AQV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3Wg-lA-7s1"/>
                             <constraint firstItem="E66-mK-AQV" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="120" id="86q-gW-Cw6"/>
+                            <constraint firstItem="R98-fa-eOv" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="0.8" id="Ak2-tl-kmR"/>
+                            <constraint firstItem="R98-fa-eOv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Mbk-jE-j5h"/>
                             <constraint firstItem="1pc-EJ-Kb0" firstAttribute="width" secondItem="DXs-mB-rxX" secondAttribute="width" id="QMt-Hz-0uQ"/>
                             <constraint firstItem="DXs-mB-rxX" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="0.9" id="US7-qr-dZf"/>
                             <constraint firstItem="1pc-EJ-Kb0" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="20" id="XaO-4L-qdi"/>
@@ -53,6 +63,7 @@
                             <constraint firstItem="DXs-mB-rxX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qSn-GE-New"/>
                             <constraint firstItem="DXs-mB-rxX" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.04" id="uBh-WN-E9K"/>
                             <constraint firstItem="DXs-mB-rxX" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-20" id="v9J-vo-kDV"/>
+                            <constraint firstItem="R98-fa-eOv" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="200" id="z5t-IK-LHH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -60,6 +71,7 @@
                     <connections>
                         <outlet property="emailField" destination="DXs-mB-rxX" id="0V4-DM-CHp"/>
                         <outlet property="loginButton" destination="E66-mK-AQV" id="pIQ-cb-V1R"/>
+                        <outlet property="loginFacebookButton" destination="R98-fa-eOv" id="30I-Mm-1ZC"/>
                         <outlet property="passwordField" destination="1pc-EJ-Kb0" id="2KF-a1-BcT"/>
                         <outlet property="textRegister" destination="33Z-tz-YKA" id="O3w-h5-Uvl"/>
                     </connections>
@@ -177,4 +189,7 @@
             <point key="canvasLocation" x="131.8840579710145" y="98.4375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Facebook" width="559" height="90"/>
+    </resources>
 </document>

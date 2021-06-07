@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FBSDKLoginKit
 
 class ViewController: UIViewController {
     //MARK: - Outlet
@@ -15,6 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var loginFacebookButton: UIButton!
     
     //MARK: - Constants
     fileprivate enum Constants{
@@ -27,7 +29,16 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         let tap = UITapGestureRecognizer(target: self, action: #selector(ViewController.tapFunction))
         textRegister.addGestureRecognizer(tap)
-        // Do any additional setup after loading the view.
+        
+    }
+    @IBAction func loginFacebookButton(_ sender: Any) {
+        let loginButton = FBLoginButton()
+        loginButton.center = view.center
+        view.addSubview(loginButton)
+        if let token = AccessToken.current, !token.isExpired {
+            nextScreen(viewId: Constants.kHomeViewControllerId)
+        }
+        loginButton.permissions = ["public_profile", "email"]
     }
     //MARK: - LabelToRegister
     @objc func tapFunction(sender: UITapGestureRecognizer){
