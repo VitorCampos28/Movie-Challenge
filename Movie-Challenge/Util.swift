@@ -22,5 +22,12 @@ extension UIViewController{
         let pushScreen = storyboard.instantiateViewController(identifier: viewId )
         navController.pushViewController(pushScreen, animated: true)
     }
+    func popToViewWithType<T>(type: T.Type){
+        guard let viewController = navigationController?.viewControllers else { return }
+        for vc in viewController {
+            if (vc is T){            self.navigationController?.popToViewController(vc, animated: true)
+            }
+        }
+    }
     
 }

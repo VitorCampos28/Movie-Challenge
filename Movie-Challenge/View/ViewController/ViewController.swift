@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import Firebase
 import FBSDKLoginKit
+import FirebaseAuth
 
 class ViewController: UIViewController {
     //MARK: - Outlet
@@ -23,6 +23,8 @@ class ViewController: UIViewController {
         static let kHomeViewControllerId = "HomeViewController"
         static let kViewStoryboardId = "RegisterViewController"
         static let kButtonOk = "OK"
+        static let kLoginErrorWithFacebookTitle = "Facebook login error"
+        static let kLoginErrorWithFacebookMessage = "Erro to try authenticate with Facebook"
     }
     
     override func viewDidLoad() {
@@ -31,25 +33,33 @@ class ViewController: UIViewController {
         textRegister.addGestureRecognizer(tap)
         
     }
-    @IBAction func loginFacebookButton(_ sender: Any) {
-        let loginButton = FBLoginButton()
-        loginButton.center = view.center
-        view.addSubview(loginButton)
-        if let token = AccessToken.current, !token.isExpired {
-            nextScreen(viewId: Constants.kHomeViewControllerId)
-        }
-        loginButton.permissions = ["public_profile", "email"]
-    }
     //MARK: - LabelToRegister
     @objc func tapFunction(sender: UITapGestureRecognizer){
         self.nextScreen(viewId: Constants.kViewStoryboardId)
     }
+
     //MARK:- Login Click Button
-    @IBAction func login(_ sender: Any) {
-        validateFields()
-        logInFunc()
-        
+    
+    @IBAction func loginFacebookButton(_ sender: Any) {
+        let loginManeger = LoginManager()
+        loginManeger.logIn(permissions: [.publicProfile, .email], viewController: self) { (resultLogin) in
+            switch resultLogin {
+            case .success(granted: _, declined: _, token: _):
+                self.loginWithFacebook()
+            case .failed(let err):
+                print(err)
+            case .cancelled:
+                print("Canceled")
+            }
+        }
     }
+    
+    @IBAction func login(_ sender: Any) {
+        if (validateFields()){
+            logInFunc()
+        }
+    }
+    
     //MARK: - LogInFunc
     func logInFunc(){
         guard let email = emailField.text, let password = passwordField.text else { return }
@@ -57,6 +67,19 @@ class ViewController: UIViewController {
             if error != nil {
                 self.creatAlert(title: "Login Error", message: "Error when try to login, try later", buttonTitle: Constants.kButtonOk)
             }else {
+                self.nextScreen(viewId: Constants.kHomeViewControllerId)
+            }
+        }
+    }
+    //MARK: - FuncLoginWithFacebook
+    func loginWithFacebook(){
+        guard let accesTokenString = AccessToken.current?.tokenString else { return }
+        let credential = FacebookAuthProvider.credential(withAccessToken: accesTokenString)
+        Auth.auth().signIn(with: credential) { (user, error) in
+            if (error != nil){
+                self.creatAlert(title: Constants.kLoginErrorWithFacebookTitle, message: Constants.kLoginErrorWithFacebookMessage, buttonTitle: Constants.kButtonOk)
+            }else {
+                Auth.auth()
                 self.nextScreen(viewId: Constants.kHomeViewControllerId)
             }
         }

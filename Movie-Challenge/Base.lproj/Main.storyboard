@@ -10,18 +10,18 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Movie_Challenge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="Movie_Challenge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DXs-mB-rxX">
-                                <rect key="frame" x="20.5" y="412.5" width="373" height="31"/>
+                                <rect key="frame" x="20.5" y="411.5" width="373" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1pc-EJ-Kb0">
-                                <rect key="frame" x="20.5" y="452.5" width="373" height="31"/>
+                                <rect key="frame" x="20.5" y="451.5" width="373" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -39,7 +39,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R98-fa-eOv">
-                                <rect key="frame" x="41.5" y="625" width="331" height="46"/>
+                                <rect key="frame" x="41.5" y="623.5" width="331" height="49"/>
                                 <state key="normal" image="Facebook"/>
                                 <connections>
                                     <action selector="loginFacebookButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e19-Sf-V8x"/>
@@ -157,14 +157,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mew-hg-vc7">
+                                <rect key="frame" x="331.5" y="33" width="51" height="30"/>
+                                <state key="normal" title="LogOut"/>
+                                <connections>
+                                    <action selector="signOutClick:" destination="7F5-tq-cU0" eventType="touchUpInside" id="Chy-1U-dOB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Mew-hg-vc7" firstAttribute="centerX" secondItem="7Tw-a1-yF8" secondAttribute="centerX" constant="150" id="CbN-1M-PZq"/>
+                            <constraint firstItem="Mew-hg-vc7" firstAttribute="centerY" secondItem="7Tw-a1-yF8" secondAttribute="centerY" constant="-400" id="NA7-66-rlR"/>
                             <constraint firstItem="XJl-Kl-veS" firstAttribute="centerX" secondItem="7Tw-a1-yF8" secondAttribute="centerX" id="Ug0-rq-Mr7"/>
                             <constraint firstItem="XJl-Kl-veS" firstAttribute="centerY" secondItem="7Tw-a1-yF8" secondAttribute="centerY" id="fqf-W5-B5l"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="S9e-hk-YPw"/>
                     </view>
+                    <connections>
+                        <outlet property="signOutButton" destination="Mew-hg-vc7" id="6zD-f3-EqM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oae-Zq-CEo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -173,10 +185,10 @@
         <!--Navigation Controller-->
         <scene sceneID="ZJZ-RB-a9H">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dh1-hy-M5G" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="dh1-hy-M5G" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="C2x-kz-tWl">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
